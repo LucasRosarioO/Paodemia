@@ -30,14 +30,6 @@ public class PaodemiaGame : MonoBehaviour
     public double PanificadoraPoder;
     public int PanificadoraNivel;
 
-    //Fermento variáveis
-    public Text FermentoText;
-    public Text FermentoBoostText;
-    public Text FermentoToGetText;
-    public double Fermento;
-    public double FermentoBoost;
-    public double FermentoToGet;
-
     public void Load()
     {
         //Pão carregar
@@ -54,6 +46,7 @@ public class PaodemiaGame : MonoBehaviour
         PanificadoraCusto = double.Parse(PlayerPrefs.GetString("PanificadoraCusto", "25"));
         PanificadoraPoder = double.Parse(PlayerPrefs.GetString("PanificadoraPoder", "2"));
         PanificadoraNivel = PlayerPrefs.GetInt("PanificadoraNivel", 1);
+
     }
 
     public void Save()
@@ -72,6 +65,7 @@ public class PaodemiaGame : MonoBehaviour
         PlayerPrefs.SetString("PanificadoraCusto", PanificadoraCusto.ToString());
         PlayerPrefs.SetString("PanificadoraPoder", PanificadoraPoder.ToString());
         PlayerPrefs.SetInt("PanificadoraNivel", PanificadoraNivel);
+
     }
 
     void Start()
@@ -83,10 +77,6 @@ public class PaodemiaGame : MonoBehaviour
 
     void Update()
     {
-        //Fermento
-        FermentoToGet = (150 * 1.5) + 1;
-        FermentoToGerText.text = "Fermento:\n" + FermentoToGet + "Fermento";
-
         //Texto Pão Clique / Pães por segundo
         if (PaoValorClique == 1)
         {
@@ -117,27 +107,6 @@ public class PaodemiaGame : MonoBehaviour
     }
 
     //Botões
-
-    public void FermentoBtn()
-    {
-        if (Paes > 100)
-        //Pão / Pães por segundo resetar
-        Paes = 0;
-        PaesPorSeg = 0;
-        PaoValorClique = 1;
-
-        //Batedeira resetar
-        BatedeiraGanchoCusto = 10;
-        BatedeiraGanchoPoder = 1;
-        BatedeiraGanchoNivel = 1;
-
-        //Panificadora resetar
-        PanificadoraCusto = 25;
-        PanificadoraNivel = 1;
-        PanificadoraPoder = 2;
-
-        Fermento += FermentoToGet;
-    }
 
     public void NovoJogo()
     {
@@ -184,6 +153,18 @@ public class PaodemiaGame : MonoBehaviour
        
     }
 
+    public void ComprarBatedeiraGanchoMaximo()
+    {
+        while (Paes >= BatedeiraGanchoCusto)
+        {
+            Paes -= BatedeiraGanchoCusto;
+            BatedeiraGanchoNivel++;
+            BatedeiraGanchoCusto *= 1.15;
+            PaoValorClique++;
+        }
+
+    }
+
     public void ComprarPanificadora()
     {
         if (Paes >= PanificadoraCusto)
@@ -194,6 +175,20 @@ public class PaodemiaGame : MonoBehaviour
             PanificadoraNivel++;
             PanificadoraCusto *= 1.15;
             
+        }
+
+    }
+
+    public void ComprarPanificadoraMax()
+    {
+        while (Paes >= PanificadoraCusto)
+        {
+            Paes -= PanificadoraCusto;
+            PaesPorSeg = PanificadoraPoder;
+            PanificadoraPoder++;
+            PanificadoraNivel++;
+            PanificadoraCusto *= 1.15;
+
         }
 
     }
