@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 
 
+
 public class PaodemiaGame : MonoBehaviour
 {
     //Paes / Paes por segundo variáveis
@@ -167,7 +168,7 @@ public class PaodemiaGame : MonoBehaviour
 
             //Batedeira resetar
             BatedeiraGanchoCusto = 10;
-            BatedeiraGanchoPoder *= FermentoBoost;
+            BatedeiraGanchoPoder = 1 * FermentoBoost;
             BatedeiraGanchoNivel = 1;
 
             //Panificadora resetar
