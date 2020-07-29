@@ -30,6 +30,14 @@ public class PaodemiaGame : MonoBehaviour
     public double PanificadoraPoder;
     public int PanificadoraNivel;
 
+    //Fermento
+    public Text FermentoText;
+    public Text FermentoBoostText;
+    public Text FermentoDisponivelText;
+    public double Fermento;
+    public double FermentoBoost;
+    public double FermentoDisponivel;
+
     public void Load()
     {
         //Pão carregar
@@ -47,6 +55,7 @@ public class PaodemiaGame : MonoBehaviour
         PanificadoraPoder = double.Parse(PlayerPrefs.GetString("PanificadoraPoder", "2"));
         PanificadoraNivel = PlayerPrefs.GetInt("PanificadoraNivel", 1);
 
+        
     }
 
     public void Save()
@@ -77,13 +86,21 @@ public class PaodemiaGame : MonoBehaviour
 
     void Update()
     {
+        //Fermento
+        FermentoDisponivel = (150 * System.Math.Sqrt(Paes / 1e7));
+        FermentoBoost = (Fermento * 0.05) + 1;
+        FermentoDisponivelText.text = "Fermento:\n" + FermentoDisponivel.ToString("F0") + " Fermentos";
+        FermentoText.text = "Fermentos: " + Fermento.ToString("F0");
+        FermentoBoostText.text = FermentoBoost.ToString("F2") + " Boost";
+
+
         //Texto Pão Clique / Pães por segundo
         if (PaoValorClique == 1)
         {
-            FazerPaoText.text = "+" + PaoValorClique + " pão";
+            FazerPaoText.text = "+" + PaoValorClique.ToString("F0") + " pão";
         } else
         {
-            FazerPaoText.text = "+" + PaoValorClique + " pães";
+            FazerPaoText.text = "+" + PaoValorClique.ToString("F0") + " pães";
         }
 
         PaesText.text = "Pães: " + Paes.ToString("F0");
@@ -92,7 +109,7 @@ public class PaodemiaGame : MonoBehaviour
         //Texto Botão Batedeira e Panificadora
         BatedeiraGanchoText.text = "Batedeira com Gancho\n" +
             "Custo: " + BatedeiraGanchoCusto.ToString("F0") + " pães\n" +
-            "Poder: +" + BatedeiraGanchoPoder + " Pão por clique\n" +
+            "Poder: +" + BatedeiraGanchoPoder.ToString("F0") + " Pão por clique\n" +
             "Nível: " + BatedeiraGanchoNivel;
         PanificadoraText.text = "Panificadora\n" +
             "Custo: " + PanificadoraCusto.ToString("F0") + " pães\n" +
@@ -124,6 +141,9 @@ public class PaodemiaGame : MonoBehaviour
         PanificadoraCusto = 25;
         PanificadoraNivel = 1;
         PanificadoraPoder = 2;
+
+        //Fermeto resetar
+        Fermento = 0;
     }
 
     public void SairJogo()
@@ -133,7 +153,30 @@ public class PaodemiaGame : MonoBehaviour
 
     public void Cheat()
     {
-        Paes += 100;
+        Paes += 10000;
+    }
+
+    public void FermentoBtn()
+    {
+        if (Paes > 111)
+        {
+            //Pão / Pães por segundo resetar
+            Paes = 0;
+            PaesPorSeg = 0;
+            PaoValorClique = 1;
+
+            //Batedeira resetar
+            BatedeiraGanchoCusto = 10;
+            BatedeiraGanchoPoder *= FermentoBoost;
+            BatedeiraGanchoNivel = 1;
+
+            //Panificadora resetar
+            PanificadoraCusto = 25;
+            PanificadoraNivel = 1;
+            PanificadoraPoder = 2;
+
+            Fermento += FermentoDisponivel;
+        }
     }
 
     public void FazerPao() 
@@ -148,7 +191,7 @@ public class PaodemiaGame : MonoBehaviour
             Paes -= BatedeiraGanchoCusto;
             BatedeiraGanchoNivel++;
             BatedeiraGanchoCusto *= 1.15;
-            PaoValorClique++;
+            PaoValorClique += BatedeiraGanchoPoder;
         }
        
     }
@@ -160,7 +203,7 @@ public class PaodemiaGame : MonoBehaviour
             Paes -= BatedeiraGanchoCusto;
             BatedeiraGanchoNivel++;
             BatedeiraGanchoCusto *= 1.15;
-            PaoValorClique++;
+            PaoValorClique+= BatedeiraGanchoPoder;
         }
 
     }
