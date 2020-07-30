@@ -11,15 +11,15 @@ Para baixar o jogo clique aqui: https://github.com/LucasRosarioO/Paodemia/releas
 
 ![iniciar](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/iniciar.png)
 
-Possui **upgrade de clique**:
+Possui **upgrades de clique**:
 
 ![Upgrade clique](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/clique.png)
 
-**Upgrade autônomo**:
+**Upgrades autônomo**:
 
 ![Upgrade autonomo](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/autonomo.png)
 
-Mecânica de **ascensão/prestige**, que reinicia o jogo mas dá ao jogador uma melhoria no poder da batederia de acordo com o número de fermentos. 
+Mecânica de **ascensão/prestige**, que reinicia o jogo mas dá ao jogador uma melhoria no poder dos upgrades de acordo com o número de fermentos. 
 Cada fermento precisa de mais pães acumulados, então quanto menos tempo o jogador levar para resgatar o fermento, mais rápido ele irá se repor. 
 Assim o jogador será incentivado a interagir mais com o jogo.
 
