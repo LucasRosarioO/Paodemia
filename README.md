@@ -15,7 +15,7 @@ Possui **upgrades de clique**:
 
 ![Upgrade clique](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/clique.png)
 
-**Upgrades autônomo**:
+**Upgrades autônomos**:
 
 ![Upgrade autonomo](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/autonomo.png)
 
