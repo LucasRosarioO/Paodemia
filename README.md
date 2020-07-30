@@ -26,6 +26,6 @@ Assim o jogador será incentivado a interagir mais com o jogo.
 
 ![Fermento Boost](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/fermentoboost.png)
 
-E possui um **menu simples** para reiniciar o jogo e sair. O jogo salva e carrega automáticamente.
+E possui um **menu simples** para reiniciar o jogo e sair, o botão **cheat** faz você ganhar 10000 pães. O jogo salva e carrega automáticamente.
 
 ![Upgrade clique](https://github.com/LucasRosarioO/Paodemia/blob/teste/imagens/menu.png)
