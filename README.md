@@ -1,5 +1,5 @@
 # Pãodemia
-Você quer comer pão, mas um vírus mortal te impede de ir na padaria, faça seu próprio pão em casa!
+_Você quer comer pão, mas um vírus mortal te impede de ir na padaria, faça seu próprio pão em casa!_
 
 Jogo incremental criado na engine **Unity** e escrito em **C#**. 
 A Unity permite que o jogo seja compilado para várias platoformas como mobile, web e sistemas operacionas como linux, windows e mac.
