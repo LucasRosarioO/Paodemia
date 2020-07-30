@@ -52,6 +52,7 @@ public class PaodemiaGame : MonoBehaviour
     public double FermentoBoost;
     public double FermentoDisponivel;
 
+    //Carregamento dos dados salvos
     public void Load()
     {
         //Pão carregar
@@ -82,6 +83,7 @@ public class PaodemiaGame : MonoBehaviour
 
     }
 
+    //Salvando os dados
     public void Save()
     {
         //Pão salvar
@@ -120,7 +122,7 @@ public class PaodemiaGame : MonoBehaviour
 
     void Update()
     {
-        //Fermento
+        //Fermento Cálculo e Texto
         FermentoDisponivel = (150 * System.Math.Sqrt(Paes / 1e7));
         FermentoBoost = (Fermento * 0.05) + 1;
         FermentoDisponivelText.text = "Fermento:\n" + FermentoDisponivel.ToString("F0") + " Fermentos";
@@ -143,14 +145,24 @@ public class PaodemiaGame : MonoBehaviour
         //Texto Botão Batedeira e Panificadora
         BatedeiraGanchoText.text = "Batedeira com Gancho\n" +
             "Custo: " + BatedeiraGanchoCusto.ToString("F0") + " pães\n" +
-            "Poder: +" + BatedeiraGanchoPoder.ToString("F0") + " Pães por clique\n" +
+            "Poder: +" + BatedeiraGanchoPoder.ToString("F0") + " pães por clique\n" +
             "Nível: " + BatedeiraGanchoNivel;
 
         //Texto Botão Tigela Inox
-        TigelaInoxText.text = "Tigela Inox\n" +
+        if(TigelaInoxPoder == 1)
+        {
+            TigelaInoxText.text = "Tigela Inox\n" +
             "Custo: " + TigelaInoxCusto.ToString("F0") + " pães\n" +
             "Poder: +" + TigelaInoxPoder.ToString("F0") + " pão por clique\n" +
             "Nível: " + TigelaInoxNivel;
+        } else
+        {
+            TigelaInoxText.text = "Tigela Inox\n" +
+           "Custo: " + TigelaInoxCusto.ToString("F0") + " pães\n" +
+           "Poder: +" + TigelaInoxPoder.ToString("F0") + " pães por clique\n" +
+           "Nível: " + TigelaInoxNivel;
+        }
+       
 
         //Texto Botão Panificadora
         PanificadoraText.text = "Panificadora\n" +
@@ -307,7 +319,6 @@ public class PaodemiaGame : MonoBehaviour
         {
             Paes -= PanificadoraCusto;
             PaesPorSeg += PanificadoraPoder;
-            //PanificadoraPoder++;
             PanificadoraNivel++;
             PanificadoraCusto *= 1.15;
             
@@ -321,7 +332,6 @@ public class PaodemiaGame : MonoBehaviour
         {
             Paes -= PanificadoraCusto;
             PaesPorSeg += PanificadoraPoder;
-            //PanificadoraPoder++;
             PanificadoraNivel++;
             PanificadoraCusto *= 1.15;
 
@@ -335,7 +345,6 @@ public class PaodemiaGame : MonoBehaviour
         {
             Paes -= AmassadeiraCusto;
             PaesPorSeg += AmassadeiraPoder;
-            //AmassadeiraPoder++;
             AmassadeiraNivel++;
             AmassadeiraCusto *= 1.15;
 
@@ -349,7 +358,6 @@ public class PaodemiaGame : MonoBehaviour
         {
             Paes -= AmassadeiraCusto;
             PaesPorSeg += AmassadeiraPoder;
-            //AmassadeiraPoder++;
             AmassadeiraNivel++;
             AmassadeiraCusto *= 1.15;
 
