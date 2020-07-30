@@ -3,7 +3,7 @@ _Você quer comer pão, mas um vírus mortal te impede de ir na padaria, faça s
 
 Jogo incremental criado na engine **Unity** e escrito em **C#**, usando as bibliotecas padrões do Unity. Feito com foco em PCs com **Windows 10 32/64bits**.
 
-Para baixar o jogo clique aqui: https://github.com/LucasRosarioO/Paodemia/releases/download/0.1/Paodemia.zip
+Para baixar o jogo clique aqui: https://github.com/LucasRosarioO/Paodemia/releases/download/1.0/Paodemia.zip
 
 - Extraia o arquivo Paodemia.zip.
 - clique em Paodemia.exe para iniciar o jogo.
